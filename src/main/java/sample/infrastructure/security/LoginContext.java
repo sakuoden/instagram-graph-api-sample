@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class LoginContext {
+    OAuth2AuthorizedClientService oAuth2AuthorizedClientService;
+
     public String accessToken() {
         DefaultOAuth2User ログインユーザー = (DefaultOAuth2User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         // https://spring.pleiades.io/spring-security/site/docs/5.3.13.RELEASE/reference/html5/#oauth2Client-authorized-repo-service
@@ -16,7 +18,6 @@ public class LoginContext {
         return ログインクライアント.getAccessToken().getTokenValue();
     }
 
-    OAuth2AuthorizedClientService oAuth2AuthorizedClientService;
     LoginContext(OAuth2AuthorizedClientService oAuth2AuthorizedClientService) {
         this.oAuth2AuthorizedClientService = oAuth2AuthorizedClientService;
     }
