@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class LoginContext {
     public String accessToken() {
         DefaultOAuth2User ログインユーザー = (DefaultOAuth2User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        // https://spring.pleiades.io/spring-security/site/docs/5.3.13.RELEASE/reference/html5/#oauth2Client-authorized-repo-service
         OAuth2AuthorizedClient ログインクライアント = oAuth2AuthorizedClientService.loadAuthorizedClient("facebook", ログインユーザー.getName());
 
         return ログインクライアント.getAccessToken().getTokenValue();
