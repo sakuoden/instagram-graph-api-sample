@@ -5,6 +5,14 @@
     <title>ホーム</title>
 </head>
 <body>
-
+<main>
+    <h1>Instagram投稿一覧</h1>
+    <section>
+        <div th:each="media : ${mediaList}">
+            <img th:src="${media.media_url()}">
+            <p th:text="${media.caption()}"></p>
+        </div>
+    </section>
+</main>
 </body>
 </html>
